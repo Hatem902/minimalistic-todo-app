@@ -7,11 +7,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { todoPostSchema } from '@/lib/validations';
 import { useAddTodoMutation, useTodosQuery } from '@/hooks/queries';
+import { outerFunction } from '@/helpers/function-example';
 
 export default function Home() {
   const { data: todos } = useTodosQuery();
   const { mutate: addTodo } = useAddTodoMutation();
-  console.log(todos);
+
+
 
   const form = useForm<z.infer<typeof todoPostSchema>>({
     resolver: zodResolver(todoPostSchema),
